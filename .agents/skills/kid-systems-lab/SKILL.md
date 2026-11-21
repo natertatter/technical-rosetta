@@ -17,11 +17,11 @@ Use this skill whenever building, extending, or running Voice Mode "What-If" exp
 - **Strictly Time-Domain (Chapters 3, 4, and 7 Only):** Do **not** use Chapter 2 Laplace transforms, transfer functions $T(s)$, $s$-domain algebra, or Bode plots.
 
 #### Scoped Governing Equations & Palm III Citations (`./index/palm_dynamics.db`)
-1. **🚵 Lab 1: Trail Bike Jump & Suspension Lab (Ch. 4, Sections 4.1–4.4)**
-   - **Governing ODE:**
-     $$m\ddot{x} + c\dot{x} + kx = f(t)$$
-   - **Component Laws:** Hooke's Law restoring force $f_s = kx$ (Eq. 4.1.1, Book p. 169 / PDF p. 182), Viscous damper force $f_d = c\dot{x}$ (Section 4.4, Book p. 203 / PDF p. 216), and Generic Mass-Spring-Damper Model (Example 4.4.3, Book p. 205 / PDF p. 218).
-   - **Energy Balance:** Gravitational drop energy $V_g = mgh$ converts on impact into initial kinetic energy $T_0 = \frac{1}{2}mv_0^2$, compressing into elastic potential energy $V_s = \frac{1}{2}kx^2$ (Eq. 4.3.1, Book p. 190 / PDF p. 203) while the shock absorber dissipates energy into thermal heat $E_{\text{heat}} = \int c\dot{x}^2\,dt$.
+1. **🏎️ Lab 1: Desert Dune Buggy Whoops & Shocks Lab (Ch. 4, Sections 4.1–4.5)**
+   - **Governing ODE (Quarter-Car Model over Road Surface Whoops Profile $y(t)$):**
+     $$m\ddot{x} + c\dot{x} + kx = c\dot{y}(t) + ky(t), \quad \text{where } y(t) = \frac{H}{2}\left(1 - \cos\left(\frac{2\pi v_{\text{buggy}} t}{L}\right)\right)$$
+   - **Component Laws:** The Quarter-Car Model with road surface displacement $y(t)$ derived from road profile and vehicle speed (Example 4.5.8, Figure 4.5.8, Book pp. 215–216 / PDF pp. 228–229), Hooke's Law restoring force $f_s = k(y - x)$ (Eq. 4.1.1, Book p. 169 / PDF p. 182), and Viscous damper force $f_d = c(\dot{y} - \dot{x})$ (Section 4.4, Book p. 203 / PDF p. 216).
+   - **Energy Balance:** Repeating road whoop excitation compresses the suspension into elastic potential energy $V_s = \frac{1}{2}k(y - x)^2$ (Eq. 4.3.1, Book p. 190 / PDF p. 203) while the shock absorber dissipates bounce energy into thermal heat $E_{\text{heat}} = \int c(\dot{y} - \dot{x})^2\,dt$.
 
 2. **⚙️ Lab 2: Steep Trail & Monster Winch Gear Lab (Ch. 3, Sections 3.1–3.3)**
    - **Governing ODE:**

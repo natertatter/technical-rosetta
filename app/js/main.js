@@ -266,24 +266,32 @@ class ActionSystemsApp {
     panel.innerHTML = `
       <div class="control-action-row">
         <button id="btn-launch-bike" class="arcade-action-btn primary-launch">
-          🚀 DROP BIKE!
+          🏁 DRIVE OVER WHOOPS!
         </button>
         <button id="btn-reset-bike" class="arcade-action-btn secondary-reset">
-          🔄 Reset Ledge
+          🔄 Reset Track
         </button>
       </div>
 
       <div class="control-group">
         <div class="control-label-row">
-          <label for="slider-drop-height">⛰️ Trail Drop Height</label>
-          <span id="val-drop-height" class="control-value-badge">${lab.dropFeet} ft</span>
+          <label for="slider-buggy-speed">🏎️ Dune Buggy Speed</label>
+          <span id="val-buggy-speed" class="control-value-badge">${lab.buggySpeedMph} MPH</span>
         </div>
-        <input id="slider-drop-height" type="range" min="1" max="10" step="1" value="${lab.dropFeet}" class="arcade-slider" />
+        <input id="slider-buggy-speed" type="range" min="10" max="40" step="5" value="${lab.buggySpeedMph}" class="arcade-slider" />
       </div>
 
       <div class="control-group">
         <div class="control-label-row">
-          <label for="slider-rider-crates">🎒 Rider + Cargo Crates (Weight)</label>
+          <label for="slider-whoop-size">🏜️ Whoop Bump Size (Height)</label>
+          <span id="val-whoop-size" class="control-value-badge">${lab.whoopSizeFt} ft Whoops</span>
+        </div>
+        <input id="slider-whoop-size" type="range" min="1" max="5" step="1" value="${lab.whoopSizeFt}" class="arcade-slider" />
+      </div>
+
+      <div class="control-group">
+        <div class="control-label-row">
+          <label for="slider-rider-crates">📦 Buggy Cargo Crates (Weight)</label>
           <span id="val-rider-crates" class="control-value-badge">${lab.riderCrates} Crates</span>
         </div>
         <input id="slider-rider-crates" type="range" min="1" max="5" step="1" value="${lab.riderCrates}" class="arcade-slider" />
@@ -321,9 +329,15 @@ class ActionSystemsApp {
     document.getElementById('btn-launch-bike').addEventListener('click', () => lab.launchDrop());
     document.getElementById('btn-reset-bike').addEventListener('click', () => lab.resetSimulation());
 
-    document.getElementById('slider-drop-height').addEventListener('input', (e) => {
-      lab.dropFeet = Number(e.target.value);
-      document.getElementById('val-drop-height').textContent = `${lab.dropFeet} ft`;
+    document.getElementById('slider-buggy-speed').addEventListener('input', (e) => {
+      lab.buggySpeedMph = Number(e.target.value);
+      document.getElementById('val-buggy-speed').textContent = `${lab.buggySpeedMph} MPH`;
+      lab.resetSimulation();
+    });
+
+    document.getElementById('slider-whoop-size').addEventListener('input', (e) => {
+      lab.whoopSizeFt = Number(e.target.value);
+      document.getElementById('val-whoop-size').textContent = `${lab.whoopSizeFt} ft Whoops`;
       lab.resetSimulation();
     });
 
@@ -750,9 +764,9 @@ class ActionSystemsApp {
 
     const sandboxStories = {
       lab1: {
-        title: '🚵 Lab 1: Trail Bike Jump & Suspension Lab',
+        title: '🏎️ Lab 1: Desert Dune Buggy Whoops & Shocks Lab',
         story:
-          'Tune your mountain bike Spring Bounce Strength and Shock Oil Squish to absorb big trail drops without bottoming out (CLANG!) or bouncing like a pogo stick!'
+          'Drive your Desert Dune Buggy across rolling sandy Whoops! Adjust Buggy Speed, Whoop Bump Size, Spring Bounce Strength, and Shock Oil Squish so you float across the bumps without bottoming out (CLANG!) or bucking!'
       },
       lab2: {
         title: '⚙️ Lab 2: Steep Trail & Monster Winch Gear Lab',
