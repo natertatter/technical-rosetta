@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Action Systems Lab — 4th-Grade Interactive Science Engine (Palm III)</title>
+  <meta
+    name="description"
+    content="Interactive 4th-grade science arcade studio powered by real time-domain differential equations from William J. Palm III's System Dynamics (Chapters 3, 4, and 7)."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@500;700&family=Nunito:wght@600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Full-Screen Celebration Confetti Canvas -->
+  <canvas id="confetti-canvas" class="confetti-layer" aria-hidden="true"></canvas>
+
+  <!-- Top Arcade Header & 4-Lab Navigation Bar -->
+  <header class="arcade-header">
+    <div class="brand-cluster">
+      <div class="brand-badge">⚡</div>
+      <div>
+        <h1 class="brand-title">ACTION SYSTEMS LAB</h1>
+        <p class="brand-subtitle">4th-Grade Interactive Physics Studio • Real Time-Domain Engine</p>
+      </div>
+    </div>
+
+    <nav class="lab-tabs-nav" aria-label="Mini-Labs Navigation">
+      <button id="tab-btn-lab1" class="lab-tab-btn active" data-lab-tab="lab1">
+        <span class="tab-icon">🚵</span>
+        <span>1. Bike Jump &amp; Shocks</span>
+      </button>
+      <button id="tab-btn-lab2" class="lab-tab-btn" data-lab-tab="lab2">
+        <span class="tab-icon">⚙️</span>
+        <span>2. Gears &amp; Winch</span>
+      </button>
+      <button id="tab-btn-lab3" class="lab-tab-btn" data-lab-tab="lab3">
+        <span class="tab-icon">💥</span>
+        <span>3. Bumper Carts</span>
+      </button>
+      <button id="tab-btn-lab4" class="lab-tab-btn" data-lab-tab="lab4">
+        <span class="tab-icon">💧🔥</span>
+        <span>4. Water &amp; Hot Cocoa</span>
+      </button>
+    </nav>
+
+    <div class="header-utilities">
+      <div class="star-tracker-pill" title="Challenges Completed">
+        <span>⭐ Stars:</span>
+        <strong id="total-stars-count">0 / 12</strong>
+      </div>
+      <button
+        id="btn-toggle-math-drawer"
+        class="math-inspector-toggle"
+        aria-expanded="false"
+        aria-controls="real-book-math-drawer"
+      >
+        🔧 Real Book Math
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Studio Workspace -->
+  <main class="studio-workspace">
+    <!-- Left Column: Mission Card, Mode Switcher, Predict-First Prompt, Interactive Canvas & Live Gauges -->
+    <section class="stage-column">
+      <!-- Mission Story Banner + Audio Read-Aloud Button + Sandbox/Challenge Switcher -->
+      <div class="mission-top-card">
+        <div class="mission-copy">
+          <div class="mission-header-row">
+            <h2 id="mission-title-text" class="mission-title">
+              🚵 Lab 1: Trail Bike Jump &amp; Suspension Lab
+            </h2>
+            <button id="btn-speak-mission" class="speak-mission-btn" title="Read mission aloud!">
+              🔊 Speak Mission
+            </button>
+          </div>
+          <p id="mission-story-text" class="mission-story">
+            Tune your mountain bike Spring Bounce Strength and Shock Oil Squish to absorb big trail drops without bottoming out (CLANG!) or bouncing like a pogo stick!
+          </p>
+        </div>
+        <div id="mode-selector-bar" class="mode-selector-bar"></div>
+      </div>
+
+      <!-- Predict-First Science Habit Card (Visible in Challenge 1, 2, 3) -->
+      <div id="prediction-card-container" class="prediction-card-wrapper hidden"></div>
+
+      <!-- High-Contrast HTML5 Simulation Canvas -->
+      <div class="canvas-stage-frame">
+        <canvas id="lab-canvas" width="900" height="440"></canvas>
+      </div>
+
+      <!-- Live Feedback Callout + 3 Animated Whole-Number Bar Gauges -->
+      <div class="bottom-telemetry-deck">
+        <div id="live-status-banner" class="status-callout status-neutral">
+          <span id="status-banner-text">Press 🚀 DROP BIKE! to test your suspension!</span>
+        </div>
+        <div id="live-gauges-strip" class="live-gauges-grid"></div>
+      </div>
+    </section>
+
+    <!-- Right Column: Tactile Oversized Arcade Controls -->
+    <aside class="controls-column" aria-label="Lab Controls">
+      <div class="controls-card">
+        <div class="controls-card-header">
+          <h3>🎛️ HANDS-ON LAB CONTROLS</h3>
+          <span class="whole-number-tag">100% Real Physics</span>
+        </div>
+        <div id="lab-controls-container" class="controls-body"></div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Hidden Collapsible "Dad / Textbook Inspector" Drawer (🔧 Real Book Math) -->
+  <aside id="real-book-math-drawer" class="math-drawer" aria-label="Dad and Textbook Inspector Drawer">
+    <div class="math-drawer-inner">
+      <div class="math-drawer-header">
+        <div>
+          <span class="math-eyebrow">🔧 DAD / TEXTBOOK INSPECTOR • DUAL-LAYER ENGINE (dt = 1/120 s RK4)</span>
+          <h3 id="math-drawer-title">Chapter 4: Spring &amp; Damper Elements in Mechanical Systems</h3>
+        </div>
+        <button id="btn-close-math-drawer" class="close-drawer-btn">✕ Close Inspector</button>
+      </div>
+
+      <div class="math-drawer-grid">
+        <div class="math-box">
+          <h4>📐 Governing Time-Domain Differential Equation</h4>
+          <div id="math-drawer-equation" class="math-equation-code">
+            m x''(t) + c x'(t) + k x(t) = f(t)
+          </div>
+          <p id="math-drawer-citation" class="math-citation-text"></p>
+        </div>
+
+        <div class="math-box">
+          <h4>📊 Live Engineering Parameters &amp; Units</h4>
+          <ul id="math-drawer-params" class="math-params-list"></ul>
+        </div>
+
+        <div class="math-box analogy-box">
+          <h4>🚲 Backyard / Trail Bike Analogy (Talk About This Together!)</h4>
+          <p id="math-drawer-analogy" class="math-analogy-text"></p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

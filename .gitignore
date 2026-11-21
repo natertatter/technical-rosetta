@@ -1,0 +1,24 @@
+# Virtual environments & Python cache
+.venv/
+__pycache__/
+*.py[cod]
+
+# Local user data & system files
+.gemini/
+. gemini
+.cache/
+.local/
+.bash_history
+.bash_logout
+.bashrc
+.profile
+.gitconfig
+.lesshst
+.viminfo
+upload/
+
+# Large binary textbooks & generated SQLite FTS5 index (re-generated via ./tools/index_book.py)
+textbooks/*.pdf
+index/*.db
+index/*.db-journal
+index/*.db-wal
