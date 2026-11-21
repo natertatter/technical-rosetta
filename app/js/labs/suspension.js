@@ -181,15 +181,13 @@ export class SuspensionLab {
   }
 
   launchDrop() {
-    if (this.mode !== 'sandbox' && !this.selectedPrediction) {
-      this.statusBanner = '🔮 Pick your Scientist Prediction first, then drive over the whoops!';
-      this.statusType = 'warn';
-      this._notifyUI();
-      return;
-    }
     this.resetSimulation();
     this.phase = 'driving';
-    this.statusBanner = `🏎️ Driving at ${this.buggySpeedMph} MPH over ${this.whoopSizeFt}-ft Desert Whoops...`;
+    if (this.mode !== 'sandbox' && !this.selectedPrediction) {
+      this.statusBanner = `🏎️ Driving at ${this.buggySpeedMph} MPH over ${this.whoopSizeFt}-ft Whoops! (Tip: Pick a 🔮 Scientist Prediction above too!)`;
+    } else {
+      this.statusBanner = `🏎️ Driving at ${this.buggySpeedMph} MPH over ${this.whoopSizeFt}-ft Desert Whoops...`;
+    }
     this.statusType = 'active';
     soundFX.playPop(420, 0.1);
     this._notifyUI();

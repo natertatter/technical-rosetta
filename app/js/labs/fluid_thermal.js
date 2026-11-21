@@ -278,8 +278,8 @@ export class FluidThermalLab {
       }
     }
 
-    // Check challenge win condition
-    if (this.mode !== 'sandbox' && this.selectedPrediction && !this.wonCurrentChallenge) {
+    // Check challenge win condition (works whether or not prediction was clicked first)
+    if (this.mode !== 'sandbox' && !this.wonCurrentChallenge) {
       const ch = CHALLENGES_LAB4.find((c) => c.id === this.mode);
       const { netFlow } = this.getFluidFlows();
       const { netHeat } = this.getThermalFlows();
@@ -304,6 +304,40 @@ export class FluidThermalLab {
       }
     }
     this._notifyUI();
+  }
+
+  startBalanceTest() {
+    this.steadyTimer = 0;
+    this.wonCurrentChallenge = false;
+    if (this.station === 'water') {
+      const { totalOut, netFlow } = this.getFluidFlows();
+      this.statusBanner = `💧 Testing Water Tower Balance: Pump In (${this.pumpInflow} gal/s) vs Spigots Out (${totalOut.toFixed(1)} gal/s) -> Net ${netFlow.toFixed(1)} gal/s!`;
+    } else {
+      const { heatLoss, netHeat } = this.getThermalFlows();
+      this.statusBanner = `🔥 Testing Hot Cocoa Balance: Heater In (${this.heaterPower} Heat/s) vs Cold Loss (${Math.round(heatLoss)} Heat/s) -> Net ${Math.round(netHeat)} Heat/s!`;
+    }
+    this.statusType = 'active';
+    soundFX.playPop(520, 0.1);
+    this._notifyUI();
+  }
+
+  resetStation() {
+    if (this.mode !== 'sandbox') {
+      this.setMode(this.mode);
+    } else {
+      if (this.station === 'water') {
+        this.waterHeight = 6.0;
+        this.pumpInflow = 6;
+      } else {
+        this.cocoaTemp = 120;
+        this.heaterPower = 60;
+      }
+      this.steadyTimer = 0;
+      this.statusBanner = '🔄 Station reset! Adjust controls to test balance!';
+      this.statusType = 'neutral';
+      soundFX.playPop(420, 0.08);
+      this._notifyUI();
+    }
   }
 
   getTextbookMathInfo() {

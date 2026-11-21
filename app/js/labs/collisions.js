@@ -143,17 +143,15 @@ export class CollisionsLab {
   }
 
   launchCart() {
-    if (this.mode !== 'sandbox' && !this.selectedPrediction) {
-      this.statusBanner = '🔮 Pick your Scientist Prediction first, then launch the cart!';
-      this.statusType = 'warn';
-      this._notifyUI();
-      return;
-    }
     this.resetSimulation();
     const { launchSpeedA } = this.getLaunchMetrics();
     this.vA = launchSpeedA;
     this.phase = 'rolling_pre';
-    this.statusBanner = '🚀 Spring released! Stored Spring Power transformed into Moving Speed Power!';
+    if (this.mode !== 'sandbox' && !this.selectedPrediction) {
+      this.statusBanner = '🚀 Spring released! Stored Spring Power transformed into Moving Speed Power! (Tip: Pick a 🔮 Prediction above too!)';
+    } else {
+      this.statusBanner = '🚀 Spring released! Stored Spring Power transformed into Moving Speed Power!';
+    }
     this.statusType = 'active';
     soundFX.playPop(500, 0.1);
     this._notifyUI();

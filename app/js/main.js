@@ -552,6 +552,14 @@ class ActionSystemsApp {
 
   _renderLab4Controls(panel, lab) {
     const stationSwitchHTML = `
+      <div class="control-action-row">
+        <button id="btn-test-balance" class="arcade-action-btn primary-launch">
+          ${lab.station === 'water' ? '💧 TEST WATER FLOW!' : '🔥 TEST COCOA HEAT!'}
+        </button>
+        <button id="btn-reset-station" class="arcade-action-btn secondary-reset">
+          🔄 Reset
+        </button>
+      </div>
       <div class="station-big-switch">
         <button id="btn-station-water" class="station-toggle-btn ${lab.station === 'water' ? 'active-water' : ''}">
           💧 Water Tower Mode
@@ -744,6 +752,13 @@ class ActionSystemsApp {
       });
     }
 
+    document.getElementById('btn-test-balance').addEventListener('click', () => {
+      lab.startBalanceTest();
+    });
+    document.getElementById('btn-reset-station').addEventListener('click', () => {
+      lab.resetStation();
+      this._renderLab4Controls(panel, lab);
+    });
     document.getElementById('btn-station-water').addEventListener('click', () => {
       lab.setStation('water');
       this._renderLab4Controls(panel, lab);

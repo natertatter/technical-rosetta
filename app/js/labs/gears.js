@@ -165,15 +165,13 @@ export class GearsLab {
   }
 
   startHaul() {
-    if (this.mode !== 'sandbox' && !this.selectedPrediction) {
-      this.statusBanner = '🔮 Pick your Scientist Prediction first, then crank the winch!';
-      this.statusType = 'warn';
-      this._notifyUI();
-      return;
-    }
     this.resetSimulation();
     this.phase = 'hauling';
-    this.statusBanner = '⚙️ Cranking the gear drivetrain up the ridge...';
+    if (this.mode !== 'sandbox' && !this.selectedPrediction) {
+      this.statusBanner = '⚙️ Cranking the gear drivetrain up the ridge! (Tip: Pick a 🔮 Scientist Prediction above too!)';
+    } else {
+      this.statusBanner = '⚙️ Cranking the gear drivetrain up the ridge...';
+    }
     this.statusType = 'active';
     soundFX.playPop(440, 0.1);
     this._notifyUI();
