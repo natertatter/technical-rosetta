@@ -81,7 +81,7 @@ export const CHALLENGES_LAB4 = [
     ],
     checkWin: (state) =>
       state.station === 'thermal' &&
-      state. cocoaTemp >= 145 &&
+      state.cocoaTemp >= 145 &&
       state.cocoaTemp <= 155 &&
       Math.abs(state.netHeat) <= 4 &&
       state.steadyTimer >= 2.2,
@@ -115,7 +115,7 @@ export const CHALLENGES_LAB4 = [
       state.cocoaTemp <= 154 &&
       Math.abs(state.netHeat) <= 4 &&
       state.steadyTimer >= 2.0,
-    winMessage: 'ARCTic THERMODYNAMICS PRO! 3x Blanket Insulation cut the 150°F blizzard loss to 50 Heat/sec, and your 50 Heater matched it perfectly!'
+    winMessage: 'ARCTIC THERMODYNAMICS PRO! 3x Blanket Insulation cut the 150°F blizzard loss to 50 Heat/sec, and your 50 Heater matched it perfectly!'
   }
 ];
 
@@ -264,7 +264,7 @@ export class FluidThermalLab {
       const derivs = (_t, state) => {
         const Tcurr = state[0];
         const { netHeat } = this.getThermalFlows(Tcurr);
-        return [(netHeat / C) * 0.35];
+        return [(netHeat / C) * 1.15];
       };
 
       const [nextT] = rk4Step(0, [this.cocoaTemp], dt, derivs, {});

@@ -44,7 +44,13 @@ class ActionSystemsApp {
       lab4: new Set()
     };
 
-    const onUpdateUI = () => this.syncLiveUI();
+    this.activeLabKey = 'lab1';
+    this.drawerOpen = false;
+    this.labs = null;
+
+    const onUpdateUI = () => {
+      if (this.labs) this.syncLiveUI();
+    };
 
     this.labs = {
       lab1: new SuspensionLab(this.canvas, onUpdateUI),
@@ -62,9 +68,6 @@ class ActionSystemsApp {
       };
     });
 
-    this.activeLabKey = 'lab1';
-    this.drawerOpen = false;
-
     this._initNavigation();
     this._initDrawer();
     this.switchLab('lab1');
@@ -78,6 +81,7 @@ class ActionSystemsApp {
   }
 
   getActiveLab() {
+    if (!this.labs) return null;
     return this.labs[this.activeLabKey];
   }
 

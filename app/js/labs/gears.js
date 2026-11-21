@@ -235,7 +235,7 @@ export class GearsLab {
 
     // Palm III Section 3.3 Eq. (Example 3.3.2, Book p. 132 / PDF p. 145):
     // I_e * d(omega_1)/dt = T_1 - T_2 / N - c_rot * omega_1
-    const netT1 = (this.legPower - loadNeed / N) * 0.14;
+    const netT1 = (this.legPower - loadNeed / N) * 1.15;
     const derivs = (_t, state, p) => {
       const w1 = state[0];
       const dw1 = (p.netT1 - p.cRot * w1) / p.Ie;
@@ -244,7 +244,7 @@ export class GearsLab {
 
     const [nextW1] = rk4Step(this.simTime, [this.omega1], dt, derivs, { netT1, cRot, Ie });
     // Cap human pedaling cadence so high-ratio gears visibly spin the output slower
-    const maxPedalOmega = 14.5;
+    const maxPedalOmega = 16.0;
     this.omega1 = Math.min(maxPedalOmega, Math.max(0, nextW1));
     this.omega2 = this.omega1 / N;
 
@@ -252,7 +252,7 @@ export class GearsLab {
     this.theta2 -= this.omega2 * dt; // Meshing spur gears rotate in opposite directions
 
     // Winch drum hauls rope proportional to driven gear angular speed omega2
-    const drumRadius = 4.2;
+    const drumRadius = 7.5;
     this.haulProgress += this.omega2 * drumRadius * dt;
 
     if (this.haulProgress >= 100) {
@@ -484,23 +484,25 @@ export class GearsLab {
     ctx.stroke();
 
     // Glowing Torque & Speed Force Arrows
+    const arrowY1 = Math.max(88, gearY - r1 - 16);
     drawForceArrow(
       ctx,
       driverX - 35,
-      gearY - r1 - 18,
+      arrowY1,
       driverX + 35,
-      gearY - r1 - 18,
+      arrowY1,
       '#38bdf8',
       `Leg Power: ${this.legPower}`
     );
 
     const muscleColor = outputMuscle > loadNeed ? '#22c55e' : '#ef4444';
+    const arrowY2 = Math.max(88, gearY - r2 - 14);
     drawForceArrow(
       ctx,
       drivenX - 45,
-      gearY - r2 - 18,
+      arrowY2,
       drivenX + 45,
-      gearY - r2 - 18,
+      arrowY2,
       muscleColor,
       `Winch Muscle: ${outputMuscle}`
     );

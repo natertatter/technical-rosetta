@@ -677,9 +677,9 @@ export class SuspensionLab {
     ctx.stroke();
 
     ctx.fillStyle = '#e2e8f0';
-    ctx.font = '800 14px "Fredoka", "Nunito", sans-serif';
+    ctx.font = '800 13px "Fredoka", "Nunito", sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText('📈 Live Fork Bounce Trail (Settle flat inside Green Zone < 2.0s!)', graphX + 14, graphY + 24);
+    ctx.fillText('📈 Live Fork Bounce Trail (Settle flat in < 2.0s!)', graphX + 14, graphY + 24);
 
     const plotX = graphX + 46;
     const plotY = graphY + 42;

@@ -56,7 +56,7 @@ export const CHALLENGES_LAB3 = [
     id: 'c3',
     title: 'Challenge 3: Heavy Monster Cart vs. Light Cart (Don\'t Overshoot!)',
     mission:
-      'Cart A has 4 Heavy Crates and Target Cart B has only 1 Light Crate! If you pull back 10 Clicks, Cart B flies off the cliff! Dial back your Pull Clicks so Cart B lands safely inside the Green Goal Zone!',
+      'Cart A has 4 Heavy Crates and Target Cart B has only 1 Light Crate! If you pull back 10 Clicks, Cart B flies off the cliff! Dial back your Pull Clicks (6 or 7 Clicks) so Cart B lands safely inside the Green Goal Zone!',
     setup: { pullClicks: 10, cratesA: 4, cratesB: 1, bumperId: 'tire' },
     question: '🔮 Why does a 4-Crate cart launch a 1-Crate cart at super high speed?',
     predictions: [
@@ -211,7 +211,7 @@ export class CollisionsLab {
       this._notifyUI();
     } else if (this.phase === 'rolling_post') {
       // Post-collision motion with gentle track rolling resistance so carts come to rest in or past the Goal Zone
-      const frictionDecel = 11.2; // tuned so 24 speed stops at posB(46) + 24^2/(2*11.2)*1.05 ~ 73 (center of Goal Zone 68..86)
+      const frictionDecel = this.bumperId === 'mud' ? 6.2 : 11.2;
       const derivs = (_t, state) => {
         const [xA, velA, xB, velB] = state;
         const accA = Math.abs(velA) > 0.08 ? -Math.sign(velA) * frictionDecel : 0;

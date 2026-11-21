@@ -742,15 +742,21 @@ body {
 
 /* Collapsible "Dad / Textbook Inspector" Drawer (🔧 Real Book Math) */
 .math-drawer {
-  background: #090e1a;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9000;
+  background: rgba(9, 14, 26, 0.98);
   border-top: 3px solid var(--accent-blue);
+  box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.75);
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.28s ease;
 }
 
 .math-drawer.open {
-  max-height: 520px;
+  max-height: 480px;
 }
 
 .math-drawer-inner {
