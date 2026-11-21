@@ -19,9 +19,9 @@ export const CHALLENGES_LAB2 = [
     setup: { driverTeeth: 10, drivenTeeth: 10, hillLevel: 3, legPower: 30 },
     question: '🔮 Which gear pair gives you 4x Climbing Muscle (Spin 4 Times -> Winch Turns 1 Time)?',
     predictions: [
-      { id: 'p1', text: '10-Tooth Driver -> 40-Tooth Driven Gear (40 ÷ 10 = 4x Climbing Muscle!)', correct: true },
-      { id: 'p2', text: '20-Tooth Driver -> 10-Tooth Driven Gear (Half the muscle, twice the speed)', correct: false },
-      { id: 'p3', text: '10-Tooth Driver -> 10-Tooth Driven Gear (1x muscle)', correct: false }
+      { id: 'p1', text: '20-Tooth Driver -> 10-Tooth Driven Gear (Half the muscle, twice the speed)', correct: false },
+      { id: 'p2', text: '10-Tooth Driver -> 10-Tooth Driven Gear (1x muscle)', correct: false },
+      { id: 'p3', text: '10-Tooth Driver -> 40-Tooth Driven Gear (40 ÷ 10 = 4x Climbing Muscle!)', correct: true }
     ],
     checkWin: (summary) => summary.reachedTop && Math.abs(summary.ratio - 4) < 0.05 && summary.timeSec <= 12.0,
     winMessage: 'CRUSHED IT! 10-Tooth -> 40-Tooth multiplied your 30 Leg Power by 4 = 120 Climbing Muscle!'
@@ -49,8 +49,8 @@ export const CHALLENGES_LAB2 = [
     setup: { driverTeeth: 20, drivenTeeth: 20, hillLevel: 5, legPower: 30 },
     question: '🔮 With 30 Leg Power against a 150-Force Monster Boulder, what happens with a 10-Tooth -> 60-Tooth combo?',
     predictions: [
-      { id: 'p1', text: '60 ÷ 10 = 6x Muscle! 30 × 6 = 180 Pulling Muscle, which beats the 150 Boulder Weight!', correct: true },
-      { id: 'p2', text: '20 ÷ 20 = 1x Muscle is enough to lift 150 with 30 power!', correct: false },
+      { id: 'p1', text: '20 ÷ 20 = 1x Muscle is enough to lift 150 with 30 power!', correct: false },
+      { id: 'p2', text: '60 ÷ 10 = 6x Muscle! 30 × 6 = 180 Pulling Muscle, which beats the 150 Boulder Weight!', correct: true },
       { id: 'p3', text: 'Gears create free energy without slowing down spin speed!', correct: false }
     ],
     checkWin: (summary) => summary.reachedTop && summary.hillLevel === 5 && summary.legPower <= 30 && summary.ratio >= 6,

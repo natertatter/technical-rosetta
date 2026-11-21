@@ -25,8 +25,8 @@ export const CHALLENGES_LAB3 = [
     setup: { pullClicks: 3, cratesA: 2, cratesB: 2, bumperId: 'spring' },
     question: '🔮 When two 2-Crate carts hit with a ⚡ Super Spring bumper, what happens to their speeds?',
     predictions: [
-      { id: 'p1', text: 'Cart A stops dead (0 Speed) and hands 100% of its Crash Oomph and Speed to Cart B!', correct: true },
-      { id: 'p2', text: 'Both carts glue together and move backward!', correct: false },
+      { id: 'p1', text: 'Both carts glue together and move backward!', correct: false },
+      { id: 'p2', text: 'Cart A stops dead (0 Speed) and hands 100% of its Crash Oomph and Speed to Cart B!', correct: true },
       { id: 'p3', text: 'Neither cart moves after the crash!', correct: false }
     ],
     checkWin: (summary) =>
@@ -60,9 +60,9 @@ export const CHALLENGES_LAB3 = [
     setup: { pullClicks: 10, cratesA: 4, cratesB: 1, bumperId: 'tire' },
     question: '🔮 Why does a 4-Crate cart launch a 1-Crate cart at super high speed?',
     predictions: [
-      { id: 'p1', text: '4 Crates carry huge Crash Oomph (4 × Speed), so the 1-Crate cart shoots forward way faster!', correct: true },
-      { id: 'p2', text: 'Heavy carts bounce backward off light carts!', correct: false },
-      { id: 'p3', text: 'Weight has no effect on Crash Oomph!', correct: false }
+      { id: 'p1', text: 'Heavy carts bounce backward off light carts!', correct: false },
+      { id: 'p2', text: 'Weight has no effect on Crash Oomph!', correct: false },
+      { id: 'p3', text: '4 Crates carry huge Crash Oomph (4 × Speed), so the 1-Crate cart shoots forward way faster!', correct: true }
     ],
     checkWin: (summary) =>
       summary.inGoalZone &&

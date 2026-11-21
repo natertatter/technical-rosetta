@@ -48,9 +48,9 @@ export const CHALLENGES_LAB4 = [
     },
     question: '🔮 When the water is 8 ft deep, why does the Bottom Spigot shoot water much farther than the Middle Spigot?',
     predictions: [
-      { id: 'p1', text: 'Deep Water Push! All 8 ft of heavy water pushes on the bottom spigot (4 gal/sec), while only 4 ft pushes on the middle (2 gal/sec)!', correct: true },
-      { id: 'p2', text: 'The top of the tank has more gravity than the bottom!', correct: false },
-      { id: 'p3', text: 'All three spigots always shoot the exact same distance!', correct: false }
+      { id: 'p1', text: 'The top of the tank has more gravity than the bottom!', correct: false },
+      { id: 'p2', text: 'All three spigots always shoot the exact same distance!', correct: false },
+      { id: 'p3', text: 'Deep Water Push! All 8 ft of heavy water pushes on the bottom spigot (4 gal/sec), while only 4 ft pushes on the middle (2 gal/sec)!', correct: true }
     ],
     checkWin: (state) =>
       state.station === 'water' &&
@@ -75,8 +75,8 @@ export const CHALLENGES_LAB4 = [
     },
     question: '🔮 At 150°F inside and 30°F outside (120°F gap), wrapping the kettle in a 2x Wool Jacket cuts heat loss to 60 Heat/sec. What Heater Power holds 150°F steady?',
     predictions: [
-      { id: 'p1', text: 'Set Heater Power to 60 Heat/sec so Heat In (60) matches Escaping Heat Out (60)!', correct: true },
-      { id: 'p2', text: 'Turn the Heater off (0 Heat/sec) and wait for snow to heat it up!', correct: false },
+      { id: 'p1', text: 'Turn the Heater off (0 Heat/sec) and wait for snow to heat it up!', correct: false },
+      { id: 'p2', text: 'Set Heater Power to 60 Heat/sec so Heat In (60) matches Escaping Heat Out (60)!', correct: true },
       { id: 'p3', text: 'Set Heater Power to 100 Heat/sec so it boils over at 212°F!', correct: false }
     ],
     checkWin: (state) =>

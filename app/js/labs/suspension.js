@@ -28,8 +28,8 @@ export const CHALLENGES_LAB1 = [
     setup: { dropFeet: 4, riderCrates: 2, springId: 'medium', damperId: 'none' },
     question: '🔮 What will happen if you jump with "No Shock Oil!" vs. adding "Syrupy Oil"?',
     predictions: [
-      { id: 'p1', text: 'Without oil it bounces like a pogo stick; Syrupy Oil turns extra bounce into heat!', correct: true },
-      { id: 'p2', text: 'Shock oil makes the spring bounce higher into the air!', correct: false },
+      { id: 'p1', text: 'Shock oil makes the spring bounce higher into the air!', correct: false },
+      { id: 'p2', text: 'Without oil it bounces like a pogo stick; Syrupy Oil turns extra bounce into heat!', correct: true },
       { id: 'p3', text: 'Shock oil changes the rider weight to zero!', correct: false }
     ],
     checkWin: (summary) => !summary.bottomedOut && !summary.buckedRider && summary.settleTime <= 2.0 && summary.damperId !== 'none',
@@ -43,9 +43,9 @@ export const CHALLENGES_LAB1 = [
     setup: { dropFeet: 8, riderCrates: 3, springId: 'soft', damperId: 'watery' },
     question: '🔮 Why does the Soft Coil hit 100% travel ("CLANG! Bottomed Out!") on an 8-ft drop?',
     predictions: [
-      { id: 'p1', text: 'The Soft Coil lacks enough Stored Spring Power to stop 8 ft of Moving Speed Power before running out of travel!', correct: true },
-      { id: 'p2', text: 'Soft springs only work when riding uphill!', correct: false },
-      { id: 'p3', text: 'An 8-ft drop has less energy than a 2-ft drop!', correct: false }
+      { id: 'p1', text: 'Soft springs only work when riding uphill!', correct: false },
+      { id: 'p2', text: 'An 8-ft drop has less energy than a 2-ft drop!', correct: false },
+      { id: 'p3', text: 'The Soft Coil lacks enough Stored Spring Power to stop 8 ft of Moving Speed Power before running out of travel!', correct: true }
     ],
     checkWin: (summary) =>
       summary.dropFeet >= 8 &&

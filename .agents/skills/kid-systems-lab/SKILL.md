@@ -83,6 +83,7 @@ Use this skill whenever building, extending, or running Voice Mode "What-If" exp
 3. **Predict-First Science Habit (Challenge Mode):**
    - Before running any Challenge test, present a 3-button hypothesis card: *"🔮 Scientist Prediction: What do you think will happen when you press GO?"*
    - Require selecting one of 3 clear predictions before unlocking/launching the test, then show whether the prediction matched and **why** in 1 punchy sentence.
+   - **Mixed Answer Positions (Never All Option A):** Always vary and mix up the position of the correct prediction across Options **A**, **B**, and **C** across challenges so kids must read and think through all three choices rather than clicking the first button every time.
 
 4. **Audio Read-Aloud (`🔊 Speak Mission`):**
    - Keep all mission prompts and result callouts to 1–2 punchy sentences paired with a big tactile `🔊 Speak Mission` button driven by `window.speechSynthesis`.
